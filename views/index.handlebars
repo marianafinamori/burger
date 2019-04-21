@@ -1,16 +1,22 @@
 
 <div>
-  <img src="../public/assets/img/burger.png" alt="Burger Illustration">
+  {{!-- <img src="../public/assets/img/burger.png" alt="Burger Illustration"> --}}
 </div>
 
 <h1>Eat the Burger</h1>
 
 {{!-- <h2>Cats that are not sleepy!</h2> --}}
 
+<h2>Burgers not eaten!</h2>
+
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
+      <li>
+        {{burger_name}}
+        <button class="change-devour-status btn btn-dark" data-id="{{id}}" data-newdevour="{{devoured}}">DEVOUR IT</button>
+        <button class="delete-burger" data-id="{{this.id}}">DELETE</button>
+      </li>
     {{/unless}}
   {{/each}}
 </ul>
@@ -20,7 +26,10 @@
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
+      <li>
+        {{burger_name}}
+        <button class="delete-burger" data-id="{{this.id}}">DELETE</button>
+      </li>
     {{/if}}
   {{/each}}
 </ul>
@@ -38,5 +47,5 @@
     <input type="radio" name="sleepy" value="0"> Awake
   </div> --}}
 
-  <button type="submit">SUBMIT</button>
+  <button id="submit-btn" type="submit">SUBMIT</button>
 </form>

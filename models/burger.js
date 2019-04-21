@@ -3,27 +3,25 @@ var orm = require("../config/orm.js");
 
 var burger = {
   selectAll: function(cb) {
-    orm.selectAll("burgers", function(res) {
+    orm.selectAll(function(res) {
       cb(res);
     });
   },
-  // The variables cols and vals are arrays.
-  insertOne: function(cols, vals, cb) {
-    orm.insertOne("burgers", cols, vals, function(res) {
-      cb(res);
-    });
+  
+
+  insertOne: function(burger_name) {
+    orm.insertOne(burger_name);
   },
-  updateOne: function(objColVals, condition, cb) {
-    orm.updateOne("burgers", objColVals, condition, function(res) {
-      cb(res);
-    });
+  
+  updateOne: function(condition) {
+    orm.updateOne(condition)
+  
   },
   delete: function(condition, cb) {
-    orm.delete("burgers", condition, function(res) {
+    orm.delete(condition, function(res) {
       cb(res);
     });
   }
 };
 
-// Export the database functions for the controller (catsController.js).
 module.exports = burger;
